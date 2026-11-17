@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+    /* Blush Pink & Pastel Lilac (Light Princess Theme) */
+    --bg-canvas: #FFF0F6;
+    --bg-canvas-end: #F7E8FF;
+    --bg-surface: rgba(255, 250, 253, 0.97);
+    --bg-surface-hover: #FFFFFF;
+    --border-hairline: rgba(214, 61, 127, 0.2);
+    --border-strong: rgba(214, 61, 127, 0.44);
+    --text-primary: #4A1237;
+    --text-secondary: #6E2B57;
+    --text-muted: #8F4D78;
+    --accent-rose: #B82B69;
+    --accent-gold: #8E316D;
+    --accent-glow: rgba(184, 43, 105, 0.18);
+  }
+
+  .dark {
+    /* Rose Velvet & Lavender Twilight (Dark Princess Theme) */
+    --bg-canvas: #1D0B1E;
+    --bg-canvas-end: #2C1232;
+    --bg-surface: rgba(48, 19, 52, 0.96);
+    --bg-surface-hover: rgba(58, 24, 62, 0.98);
+    --border-hairline: rgba(255, 168, 212, 0.22);
+    --border-strong: rgba(255, 168, 212, 0.48);
+    --text-primary: #FFF5FA;
+    --text-secondary: #F8D7EA;
+    --text-muted: #DDA9CA;
+    --accent-rose: #FF9EC7;
+    --accent-gold: #FFD7EA;
+    --accent-glow: rgba(255, 158, 199, 0.25);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: clip;
+    background:
+      radial-gradient(circle at 18% 12%, var(--accent-glow) 0%, transparent 42%),
+      radial-gradient(circle at 84% 78%, var(--accent-glow) 0%, transparent 44%),
+      linear-gradient(160deg, var(--bg-canvas) 0%, var(--bg-canvas-end) 100%);
+    color: var(--text-primary);
+    transition: background-color 0.18s ease, color 0.18s ease;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.princess-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  contain: layout style;
+}
+
+.princess-card-interactive {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  contain: layout style;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.princess-card-interactive:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+  box-shadow: 0 16px 34px -16px var(--accent-glow);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+.cta-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-18deg);
+}
+
+.cta-shimmer:hover::after {
+  animation: shimmerSweep 0.65s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cta-shimmer:hover::after {
+    animation: none;
+  }
+}

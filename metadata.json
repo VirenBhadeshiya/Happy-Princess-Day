@@ -1,0 +1,6 @@
+{
+  "name": "Happy Princess Day — Nandita Jayswal (Huddy)",
+  "description": "A royal digital tribute celebrating the grace, warmth, and genuine friendship of Nandita Jayswal, affectionately known as Huddy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
